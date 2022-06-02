@@ -1,0 +1,87 @@
+---
+title: ""
+output: word_document
+date: ""
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(flextable)
+theme_set(theme_bw(base_size = 20))
+knitr::opts_chunk$set(echo = FALSE, ft_show_coltype = FALSE, ft_max_row = 100,
+                      fig.width = unit(11, "cm"), fig.height = unit(6, "cm"))
+load("data/figtab.RData")
+set_flextable_defaults(
+    digits = 3,
+    font.family = "Times New Roman",
+    font.size = 12,
+    na_str = "NA",
+    padding = 2,
+    line_spacing = 1,
+    table.layout = "autofit")
+use_df_printer()
+```
+
+```{r tab.cap="survival"}
+rbind(tab_surv_24h, tab_surv_la)
+```
+
+```{r tab.cap="Female body mass"}
+tab_bm_f
+```
+
+```{r tab.cap="Male body mass"}
+tab_bm_m
+```
+
+```{r tab.cap="Egg production rate"}
+tab_repro_rate
+```
+
+```{r tab.cap="Egg hatching"}
+tab_repro_hatching
+```
+
+```{r fig.cap="24h survival probability curve"}
+gg_surv_curve_24h
+```
+
+```{r fig.cap="24h treatment benefit curve"}
+gg_surv_benefit_24h
+```
+
+```{r fig.cap="larva-to-adult survival probability curve"}
+gg_surv_curve_la
+```
+
+```{r fig.cap="24h treatment benefit curve"}
+gg_surv_benefit_la
+```
+
+```{r fig.cap="24h survival family effects", fig.width=unit(15,"cm"), fig.height=unit(9,"cm")}
+gg_surv_family_24h
+```
+
+```{r fig.cap="24h survival family effect pairs", fig.width=unit(11,"cm")}
+gg_surv_family_24h_pairs
+```
+
+```{r fig.cap="larva-to-adult survival family effects"}
+gg_surv_family_la
+```
+
+```{r fig.cap="female emergence body mass family effects"}
+gg_bm_family_ad_f
+```
+
+```{r fig.cap="male emergence body mass family effects"}
+gg_bm_family_ad_m
+```
+
+```{r fig.cap="female 10-day body mass family effects"}
+gg_bm_family_10d_f
+```
+
+```{r fig.cap="male 10-day body mass family effects"}
+gg_bm_family_10d_m
+```

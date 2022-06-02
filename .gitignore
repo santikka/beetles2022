@@ -1,0 +1,9 @@
+*\.zip
+*\.docx
+*\.csv
+/data/original
+/old/
+/data/figtab\.RData
+/data/results\.RData
+/data/samples\.RData
+.Rproj.user
