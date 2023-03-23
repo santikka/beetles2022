@@ -8,17 +8,20 @@ date: ""
 library(ggplot2)
 library(flextable)
 theme_set(theme_bw(base_size = 20))
-knitr::opts_chunk$set(echo = FALSE, ft_show_coltype = FALSE, ft_max_row = 100,
-                      fig.width = unit(11, "cm"), fig.height = unit(6, "cm"))
+knitr::opts_chunk$set(
+  echo = FALSE, ft_show_coltype = FALSE, ft_max_row = 100,
+  fig.width = unit(11, "cm"), fig.height = unit(6, "cm")
+)
 load("data/figtab.RData")
 set_flextable_defaults(
-    digits = 3,
-    font.family = "Times New Roman",
-    font.size = 12,
-    na_str = "NA",
-    padding = 2,
-    line_spacing = 1,
-    table.layout = "autofit")
+  digits = 3,
+  font.family = "Times New Roman",
+  font.size = 12,
+  na_str = "NA",
+  padding = 2,
+  line_spacing = 1,
+  table.layout = "autofit"
+)
 use_df_printer()
 ```
 
@@ -42,6 +45,8 @@ tab_repro_rate
 tab_repro_hatching
 ```
 
+\newpage
+
 ```{r fig.cap="24h survival probability curve"}
 gg_surv_curve_24h
 ```
@@ -50,6 +55,8 @@ gg_surv_curve_24h
 gg_surv_benefit_24h
 ```
 
+\newpage
+
 ```{r fig.cap="larva-to-adult survival probability curve"}
 gg_surv_curve_la
 ```
@@ -57,6 +64,8 @@ gg_surv_curve_la
 ```{r fig.cap="24h treatment benefit curve"}
 gg_surv_benefit_la
 ```
+
+\newpage
 
 ```{r fig.cap="24h survival family effects", fig.width=unit(15,"cm"), fig.height=unit(9,"cm")}
 gg_surv_family_24h
@@ -70,6 +79,18 @@ gg_surv_family_24h_pairs
 gg_surv_family_la
 ```
 
+\newpage
+
+```{r fig.cap="female emergence body mass curve"}
+gg_bm_curve_ad_f
+```
+
+```{r fig.cap="male emergence body mass curve"}
+gg_bm_curve_ad_m
+```
+
+\newpage
+
 ```{r fig.cap="female emergence body mass family effects"}
 gg_bm_family_ad_f
 ```
@@ -78,10 +99,32 @@ gg_bm_family_ad_f
 gg_bm_family_ad_m
 ```
 
+\newpage
+
+```{r fig.cap="female 10-day body mass curve"}
+gg_bm_curve_10d_f
+```
+
+```{r fig.cap="male 10-day body mass curve"}
+gg_bm_curve_10d_m
+```
+
+\newpage
+
 ```{r fig.cap="female 10-day body mass family effects"}
 gg_bm_family_10d_f
 ```
 
 ```{r fig.cap="male 10-day body mass family effects"}
 gg_bm_family_10d_m
+```
+
+\newpage
+
+```{r fig.cap="egg production rate"}
+gg_repro_curve_rate
+```
+
+```{r fig.cap="mean egg hatching probability"}
+gg_repro_curve_hatching
 ```

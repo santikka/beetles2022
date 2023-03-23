@@ -99,4 +99,3 @@ mcmc_summary(repro_samples) |> print(n = Inf)
 
 source("code/results.R")
 source("code/figtab.R")
-
