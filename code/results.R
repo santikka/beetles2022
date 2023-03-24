@@ -81,8 +81,8 @@ save(
   surv_pred_la, surv_gens_la, surv_family_la, surv_curve_la, surv_benefit_la,
   bm_pvals_ad_f, bm_gens_ad_f, bm_curve_ad_f, bm_family_ad_f,
   bm_pvals_10d_f, bm_gens_10d_f, bm_curve_10d_f, bm_family_10d_f,
-  bm_pvals_ad_m, bm_gens_ad_m, bm_family_ad_m,
-  bm_pvals_10d_m, bm_gens_10d_m, bm_family_10d_m,
+  bm_pvals_ad_m, bm_gens_ad_m, bm_curve_ad_m, bm_family_ad_m,
+  bm_pvals_10d_m, bm_gens_10d_m, bm_curve_10d_m, bm_family_10d_m,
   repro_pvals_total, repro_pvals_hatched, repro_pvals_cor,
   repro_curve_rate, repro_curve_hatching,
   file = "data/results.RData"

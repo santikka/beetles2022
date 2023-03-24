@@ -37,12 +37,16 @@ generate_consts <- function(x, s, cov_inits = list(),
   trt_c <- trt - mean(trt, na.rm = TRUE)
   pa_trt <- x$parental_treatment
   ti <- x$treatment_interaction
-  sp_basis_c <- bs(trt[!ti],
-    knots = seq(0.0, 8.0, by = 0.5), degree = 3,
+  sp_basis_c <- bs(
+    x = trt[!ti],
+    knots = seq(0.0, 8.0, by = 0.5),
+    degree = 3,
     Boundary.knots = c(0.0, 8.0)
   )
-  sp_basis_t <- bs(trt[ti],
-    knots = seq(0.0, 6.0, by = 0.5), degree = 3,
+  sp_basis_t <- bs(
+    x = trt[ti],
+    knots = seq(0.0, 6.0, by = 0.5),
+    degree = 3,
     Boundary.knots = c(0.0, 6.0)
   )
   S_t <- ncol(sp_basis_t)
@@ -51,9 +55,12 @@ generate_consts <- function(x, s, cov_inits = list(),
   fam_g <- which(fam_size == 1)
   N_fam_tg <- length(fam_tg)
   N_fam_g <- length(fam_g)
-  fam_arr <- sapply(fam, function(x) {
-    which(fam_mat == x, arr.ind = TRUE)
-  })
+  fam_arr <- sapply(
+    fam,
+    function(x) {
+      which(fam_mat == x, arr.ind = TRUE)
+    }
+  )
   n_cov <- length(cov_inits)
   control <- vector(mode = "list", length = n_cov)
   for (i in seq_len(n_cov)) {
@@ -108,8 +115,7 @@ generate_repro_consts <- function(x, cov_inits = list()) {
     }
   }
   named_list(
-    N, B, gen, gen2, age4, age5, trt, pa_trt, ti, bm,
-    log_total_mean, control
+    N, B, gen, gen2, age4, age5, trt, pa_trt, ti, bm, log_total_mean, control
   )
 }
 
@@ -250,11 +256,15 @@ pp_sampler_NF <- nimbleFunction(
     parent_nodes <- model$getParents(data_nodes, stochOnly = TRUE)
     dep_nodes <- model$getDependencies(parent_nodes, self = TRUE, includeData = FALSE)
     sampled_nodes <- mcmc$mvSamples$getVarNames()
-    dep_expand <- dep_nodes |> model$expandNodeNames(returnScalarComponents = TRUE)
-    data_expand <- data_nodes |> model$expandNodeNames(returnScalarComponents = TRUE)
-    sampled_expand <- sampled_nodes |> model$expandNodeNames(returnScalarComponents = TRUE)
+    dep_expand <- dep_nodes |>
+      model$expandNodeNames(returnScalarComponents = TRUE)
+    data_expand <- data_nodes |>
+      model$expandNodeNames(returnScalarComponents = TRUE)
+    sampled_expand <- sampled_nodes |>
+      model$expandNodeNames(returnScalarComponents = TRUE)
     sim_nodes <- setdiff(unique(c(dep_expand, data_expand)), sampled_expand)
-    n <- data_expand |> length()
+    n <- data_expand |>
+      length()
   },
   run = function(samples = double(2)) {
     n_samp <- dim(samples)[1]
@@ -419,7 +429,8 @@ survival_curve <- function(samples, const, fun = expit, prob = FALSE) {
   )
 }
 
-curve_plot <- function(curve, fun = c("identity", "logit"), breaks = "", y_label = "") {
+curve_plot <- function(curve, fun = c("identity", "logit"),
+                       breaks = "", y_label = "") {
   fun <- match.arg(fun)
   if (fun == "identity") {
     breaks <- waiver()
@@ -433,7 +444,11 @@ curve_plot <- function(curve, fun = c("identity", "logit"), breaks = "", y_label
     scale_colour_manual(
       name = "Transgenerational\ntreatment",
       values = c("black", "red", "blue"),
-      labels = c("Control", "Treated (1.0 \u00b5g/ml)", "Treated (8.0 \u00b5g/ml)")
+      labels = c(
+        "Control",
+        "Treated (1.0 \u00b5g/ml)",
+        "Treated (8.0 \u00b5g/ml)"
+      )
     ) +
     scale_y_continuous(
       trans = fun,

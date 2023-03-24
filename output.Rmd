@@ -9,8 +9,12 @@ library(ggplot2)
 library(flextable)
 theme_set(theme_bw(base_size = 20))
 knitr::opts_chunk$set(
-  echo = FALSE, ft_show_coltype = FALSE, ft_max_row = 100,
-  fig.width = unit(11, "cm"), fig.height = unit(6, "cm")
+  echo = FALSE, 
+  ft_show_coltype = FALSE, 
+  ft_max_row = 100,
+  fig.width = unit(11, "cm"), 
+  out.width = "100%",
+  fig.height = unit(6, "cm")
 )
 load("data/figtab.RData")
 set_flextable_defaults(

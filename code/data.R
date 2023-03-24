@@ -147,11 +147,10 @@ repro1 <- read_spss2(data_path, "OD_1gen_reproduction_A.sav") |>
   mutate(
     generation = 1L,
     parental_treatment = 0.0,
-    treatment = recode(as.numeric(treatment),
-      "1" = 0.3, "2" = 0.5, "3" = 0.8,
-      "4" = 1.0, "5" = 1.59, "6" = 2.6,
-      "7" = 3.5, "8" = 4.0, "9" = 4.5,
-      "10" = 5.0, "11" = 5.5, "12" = 6.0,
+    treatment = recode(
+      as.numeric(treatment),
+      "1" = 0.3, "2" = 0.5, "3" = 0.8, "4" = 1.0, "5" = 1.59, "6" = 2.6,
+      "7" = 3.5, "8" = 4.0, "9" = 4.5, "10" = 5.0, "11" = 5.5, "12" = 6.0,
       "13" = 6.5, "14" = 8.0
     )
   )
@@ -159,13 +158,14 @@ repro1 <- read_spss2(data_path, "OD_1gen_reproduction_A.sav") |>
 repro2 <- read_spss2(data_path, "OD_2gen_reproduction.sav") |>
   mutate(
     generation = 2L,
-    treatment = recode(treatment,
-      "2" = 1.59, "3" = 2.6,
-      "4" = 4.5, "5" = 6
+    treatment = recode(
+      treatment,
+      "2" = 1.59, "3" = 2.6, "4" = 4.5, "5" = 6
     )
   ) |>
   rename(parental_treatment = parental_trea) |>
-  mutate(parental_treatment = recode(parental_treatment,
+  mutate(parental_treatment = recode(
+    parental_treatment,
     "2" = 1.59, "3" = 2.6, "5" = 6.0
   ))
 

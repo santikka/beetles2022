@@ -3,7 +3,7 @@
 ###########
 
 theme_set(theme_bw(base_size = 20))
-update_geom_defaults("line", list(size = 0.75))
+update_geom_defaults("line", list(linewidth = 1.0))
 
 # 24h survival
 gg_surv_family_24h <- family_effects_plot(

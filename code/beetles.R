@@ -29,21 +29,21 @@
 # [21] vctrs_0.3.8      glue_1.6.2       stringi_1.7.6    compiler_4.1.2
 # [25] pillar_1.7.0     generics_0.1.2   scales_1.1.1     pkgconfig_2.0.3
 
-rm(list = ls())
-
-library(coda)
-library(dplyr)
-library(ggplot2)
-library(ggrepel)
-library(ggnewscale)
-library(forcats)
-library(moments)
-library(nimble)
-library(parallel)
-library(splines)
-library(stringr)
-library(tidyr)
-library(tibble)
+suppressPackageStartupMessages({
+  library(coda)
+  library(dplyr)
+  library(ggplot2)
+  library(ggrepel)
+  library(ggnewscale)
+  library(forcats)
+  library(moments)
+  library(nimble)
+  library(parallel)
+  library(splines)
+  library(stringr)
+  library(tidyr)
+  library(tibble)
+})
 
 
 # Data and Models ---------------------------------------------------------
@@ -56,11 +56,11 @@ source("code/mcmc.R")
 
 # MCMC Simulation ---------------------------------------------------------
 
-# Run the simulations
-# source("code/runs.R")
-#
-# Or load existing samples
-# load("data/samples.RData")
+if (file.exists("data/samples.RData")) {
+  load("data/samples.RData")
+} else {
+  source("code/runs.R")
+}
 
 
 # Diagnostics -------------------------------------------------------------
@@ -97,5 +97,10 @@ mcmc_summary(repro_samples) |> print(n = Inf)
 
 # Figures and Tables ------------------------------------------------------
 
-source("code/results.R")
+if (file.exists("data/results.RData")) {
+  load("data/results.RData")
+} else {
+  source("code/results.R")
+}
+
 source("code/figtab.R")

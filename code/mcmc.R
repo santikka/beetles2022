@@ -92,22 +92,27 @@ surv_mcmc <- function(seed, mcmc_const, mcmc_data,
       tau_f = 1 + rexp(2)
     )
   )
-  conf <- configureMCMC(mod, monitors = c(
-    "beta", "f", "f_raw", "rho_f",
-    "log_sigma_sp_c", "log_sigma_sp_t",
-    "sp_c", "sp_t", "tau_f"
-  ))
+  conf <- configureMCMC(
+    mod,
+    monitors = c(
+      "beta", "f", "f_raw", "rho_f",
+      "log_sigma_sp_c", "log_sigma_sp_t",
+      "sp_c", "sp_t", "tau_f"
+    )
+  )
   conf$removeSampler("sp_c[]")
   conf$removeSampler("sp_t[]")
   conf$removeSampler("log_sigma_sp_c")
   conf$removeSampler("log_sigma_sp_t")
   conf$addSampler(
     target = c("log_sigma_sp_c", paste0("sp_c[1:", mcmc_const$S_c, "]")),
-    type = "RW_block", control = mcmc_const$control[[1]]
+    type = "RW_block",
+    control = mcmc_const$control[[1]]
   )
   conf$addSampler(
     target = c("log_sigma_sp_t", paste0("sp_t[1:", mcmc_const$S_t, "]")),
-    type = "RW_block", control = mcmc_const$control[[2]]
+    type = "RW_block",
+    control = mcmc_const$control[[2]]
   )
   Rmcmc <- buildMCMC(conf)
   Cmod <- compileNimble(mod)
@@ -229,11 +234,13 @@ bm_mcmc <- function(seed = 0, mcmc_const, mcmc_data,
   conf$addSampler(target = c("beta[1, 2]", "beta[7, 2]"), type = "AF_slice")
   conf$addSampler(
     target = paste0("beta[", 1:6, ", 1]"),
-    type = "RW_block", control = mcmc_const$control[[1]]
+    type = "RW_block",
+    control = mcmc_const$control[[1]]
   )
   conf$addSampler(
     target = paste0("beta[", 2:6, ", 2]"),
-    type = "RW_block", control = mcmc_const$control[[2]]
+    type = "RW_block",
+    control = mcmc_const$control[[2]]
   )
   Rmcmc <- buildMCMC(conf)
   Cmod <- compileNimble(mod)
@@ -404,19 +411,23 @@ repro_mcmc <- function(seed, mcmc_const, mcmc_data,
   conf$removeSampler("theta[]")
   conf$addSampler(
     target = paste0("beta[", 1:9, ", 1]"),
-    type = "RW_block", control = mcmc_const$control[[1]]
+    type = "RW_block",
+    control = mcmc_const$control[[1]]
   )
   conf$addSampler(
     target = c("kappa[1]", "kappa[2]", "lambda[1]", "lambda[2]"),
-    type = "RW_block", control = mcmc_const$control[[2]]
+    type = "RW_block",
+    control = mcmc_const$control[[2]]
   )
   conf$addSampler(
     target = paste0("beta[", 1:9, ", 2]"),
-    type = "RW_block", control = mcmc_const$control[[3]]
+    type = "RW_block",
+    control = mcmc_const$control[[3]]
   )
   conf$addSampler(
     target = paste0("theta[", 1:9, "]"),
-    type = "RW_block", control = mcmc_const$control[[4]]
+    type = "RW_block",
+    control = mcmc_const$control[[4]]
   )
   Rmcmc <- buildMCMC(conf)
   Cmod <- compileNimble(mod)
