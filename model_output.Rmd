@@ -5,6 +5,7 @@ date: ""
 ---
 
 ```{r setup, include=FALSE}
+library(tibble)
 library(ggplot2)
 library(flextable)
 theme_set(theme_bw(base_size = 20))
@@ -131,4 +132,20 @@ gg_repro_curve_rate
 
 ```{r fig.cap="mean egg hatching probability"}
 gg_repro_curve_hatching
+```
+
+\newpage
+
+```{r tab.cap="Experimental design"}
+tab_design |>
+  as.data.frame.matrix() |>
+  rownames_to_column(var = "Treatment")
+```
+
+\newpage
+
+```{r tab.cap="Experimental design for reproduction data"}
+tab_design_repro |>
+  as.data.frame.matrix() |>
+  rownames_to_column(var = "Treatment")
 ```

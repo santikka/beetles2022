@@ -4,7 +4,8 @@ Materials for the paper *Transgenerational Sublethal Pyrethroid Exposure Gives R
 
 # Repository contents
 
- - `data`: All data files used for modeling.
- - `code`: All R code ussed for the analyses.
+ - `data/`: All data files used for modeling.
+ - `code/`: All R code ussed for the analyses.
+ - `model_output.Rmd`: An Rmarkdown file to produce all figures and tables of the paper.
  - `paper`: The manuscript (TBD)
 

@@ -168,6 +168,8 @@ gg_repro_curve_hatching <- curve_plot(
 # Tables #
 ##########
 
+tab_design <- addmargins(table(gens$treatment, gens$parental_treatment), c(1, 2), sum)
+tab_design_repro <- addmargins(table(repros$treatment, repros$parental_treatment), c(1, 2), sum)
 tab_surv_24h <- surv_table(surv_samples_24h, idx = 1, suffix = "(a)")
 tab_surv_la <- surv_table(surv_samples_la, idx = 2, suffix = "(b)")
 tab_bm_f <- bm_table(bm_samples_f, idx = 3)
@@ -181,6 +183,7 @@ save(
   gg_bm_family_ad_f, gg_bm_curve_ad_f, gg_bm_family_10d_f, gg_bm_curve_10d_f,
   gg_bm_family_ad_m, gg_bm_curve_ad_m, gg_bm_family_10d_m, gg_bm_curve_10d_m,
   gg_repro_curve_rate, gg_repro_curve_hatching,
+  tab_design, tab_design_repro,
   tab_surv_24h, tab_surv_la,
   tab_bm_f, tab_bm_m,
   tab_repro_rate, tab_repro_hatching,
