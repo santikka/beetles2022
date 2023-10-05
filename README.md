@@ -1,6 +1,6 @@
-# Transgenerational Sublethal Pyrethroid Exposure Gives Rise To Insecticide Resistance
+# Transgenerational Sublethal Pyrethroid Exposure Gives Rise To Insecticide Resistance In A Pest Insect
 
-Materials for the paper *Transgenerational Sublethal Pyrethroid Exposure Gives Rise To Insecticide Resistance* by Aigi Margus, Santtu Tikka, Juha Karvanen and Leena Lindström.
+Materials for the paper *Transgenerational Sublethal Pyrethroid Exposure Gives Rise To Insecticide Resistance In A Pest Insect* by Aigi Margus, Santtu Tikka, Juha Karvanen and Leena Lindström.
 
 # Repository contents
 
